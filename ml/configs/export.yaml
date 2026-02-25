@@ -1,0 +1,9 @@
+export:
+  model_checkpoint: models/best_model_stage2.pth
+  class_mapping_path: models/class_mapping.json
+  architecture: mobilenetv3_large_100
+  image_size: 224
+  onnx_path: export/plant_disease.onnx
+  tflite_path: export/plant_disease.tflite
+  quantization: float16
+  opset_version: 13

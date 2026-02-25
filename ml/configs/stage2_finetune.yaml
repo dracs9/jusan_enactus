@@ -1,0 +1,45 @@
+experiment:
+  name: oskin_stage2_finetune
+  seed: 42
+  stage: 2
+
+data:
+  root: data/kazakhstan_fields
+  image_size: 224
+  batch_size: 16
+  num_workers: 4
+  val_split: 0.20
+  test_split: 0.10
+  class_mapping_path: models/class_mapping.json
+
+model:
+  architecture: mobilenetv3_large_100
+  pretrained: false
+  checkpoint: models/best_model_stage1.pth
+  dropout: 0.4
+  freeze_backbone_epochs: 0
+
+training:
+  epochs: 30
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: adamw
+  scheduler: cosine
+  warmup_epochs: 2
+  early_stopping_patience: 8
+  gradient_clip: 1.0
+
+logging:
+  checkpoint_dir: models/checkpoints
+  best_model_path: models/best_model_stage2.pth
+  log_interval: 5
+
+augmentation:
+  random_brightness_contrast: true
+  gaussian_blur: true
+  shadow_simulation: true
+  perspective_distortion: true
+  random_noise: true
+  horizontal_flip: true
+  normalize_mean: [0.485, 0.456, 0.406]
+  normalize_std: [0.229, 0.224, 0.225]
