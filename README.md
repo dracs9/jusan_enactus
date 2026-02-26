@@ -1,4 +1,4 @@
-# Оскін (Oskín) — AgTech Platform
+# Jusan — AgTech Platform
 
 Production-grade AgTech system for Kazakhstan farmers.
 Plant disease detection via mobile camera, field management, marketplace, risk assessment, economic calculator, and AI agronomist.
