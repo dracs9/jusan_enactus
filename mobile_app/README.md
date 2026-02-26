@@ -39,19 +39,30 @@ cp oskin_ml/export/plant_disease.tflite oskin_mobile/assets/models/
 
 ### 4. Backend URL
 
-Update `lib/core/constants/app_constants.dart`:
-```dart
-static const String baseUrl = 'http://YOUR_BACKEND_IP:8000';
+The Flutter app reads its backend URL from a **compile-time env variable** `BACKEND_URL`, which you define in the root `.env` file:
+
+```bash
+# .env
+BACKEND_URL=http://10.0.2.2:8000   # Android emulator
 ```
 
-For Android emulator use `http://10.0.2.2:8000`.
-For iOS simulator use `http://localhost:8000`.
+For iOS simulator you can use:
+
+```bash
+BACKEND_URL=http://localhost:8000
+```
+
+Then run the app from the repo root, loading `.env` and passing it to Flutter:
+
+```bash
+set -a; source .env; set +a
+cd mobile_app
+flutter run --dart-define=BACKEND_URL="${BACKEND_URL}"
+```
 
 ### 5. Run
 
-```bash
-flutter run
-```
+See the command above for local development, or pass `--dart-define=BACKEND_URL=...` directly when running/building.
 
 ## Architecture
 
