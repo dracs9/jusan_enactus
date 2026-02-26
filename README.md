@@ -350,3 +350,11 @@ python inference/predict.py \
 - Add your Google Maps API key before building mobile release
 - Use `docker compose --profile tools up adminer` for DB admin UI
 - The `model_storage` Docker volume persists the TFLite model across container restarts
+
+## Running
+
+```flutter run --dart-define=BACKEND_URL=http://ip:port```
+
+## Building on android
+
+```flutter build apk --release --dart-define=BACKEND_URL=http://ip:port```
